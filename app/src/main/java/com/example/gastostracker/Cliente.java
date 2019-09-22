@@ -1,5 +1,7 @@
 package com.example.gastostracker;
 
+import java.io.Serializable;
+
 public class Cliente implements Serializable {
 
     private int id;
@@ -17,7 +19,6 @@ public class Cliente implements Serializable {
     public int getId(){ return this.id; }
     public String getNome(){ return this.nome; }
     public String getSexo(){ return this.sexo; }
-    public boolean getVip(){ return this.vip; }
     public String getUf(){ return this.uf; }
 
     @Override
