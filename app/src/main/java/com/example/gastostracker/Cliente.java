@@ -1,8 +1,7 @@
 package com.example.gastostracker;
 
-import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Cliente{
 
     private int id;
     private String nome;

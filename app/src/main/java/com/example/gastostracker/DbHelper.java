@@ -15,9 +15,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private final String CRIA_GASTOS = "CREATE TABLE tbGastos (" +
             "pkGasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "Descricao TEXT NOT NULL, Valor TEXT, UF TEXT NOT NULL, fkCliente INTEGER NOT NULL, " +
+            "Descricao TEXT NOT NULL, " +
+            "Valor TEXT, " +
+            "fkCliente INTEGER NOT NULL, " +
             "fkCategoria INTEGER NOT NULL," +
-            "FOREIGN KEY(fkCategoria) REFERENCES tbCategorias(pkCategoria))";
+            "FOREIGN KEY(fkCategoria) REFERENCES tbCategorias(pkCategoria)" +
+            "FOREIGN KEY(fkCliente) REFERENCES tbClientes(pkCliente))";
 
     private final String CRIA_CATEGORIAS = "CREATE TABLE tbCategorias (" +
             "pkCategoria INTEGER PRIMARY KEY AUTOINCREMENT, " +
