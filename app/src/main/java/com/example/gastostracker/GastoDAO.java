@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class GastoDAO {
@@ -24,13 +27,16 @@ public class GastoDAO {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     String salvar(Gasto gasto){
         ContentValues valores;
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
         long resultado;
         db = banco.getWritableDatabase();
         try{
             valores=new ContentValues();
             valores.put("descricao", gasto.getDescricao());
             valores.put("valor", gasto.getValor());
-            valores.put("data",gasto.getData().toString() );
+            valores.put("data", date.toString());
+            System.out.println(date);
             resultado= db.insert("tbGastos",null,valores);
             db.close();
             if (resultado !=-1){
@@ -51,5 +57,6 @@ public class GastoDAO {
         db.close();
         return "Removido";
     }
+
 }
 

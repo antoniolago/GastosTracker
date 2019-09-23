@@ -9,8 +9,8 @@ import android.widget.TextView;
 import java.util.List;
 
 public class GastosAdapter extends ArrayAdapter {
-    public GastosAdapter( Context context,  List<Gasto> objetcts) {
-        super(context, 0, objetcts);
+    public GastosAdapter( Context context,  List<Gasto> objetos) {
+        super(context, 0, objetos);
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
@@ -24,7 +24,7 @@ public class GastosAdapter extends ArrayAdapter {
         TextView data = (TextView) listItemView.findViewById(R.id.txtData);
         TextView valor = (TextView) listItemView.findViewById(R.id.txtValor);
         descricao.setText(current.getDescricao().toString());
-        data.setText(current.getData().toString());
+        //data.setText(current.getData().toString());
         valor.setText(current.getValor().toString());
 
         return  listItemView;

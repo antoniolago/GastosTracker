@@ -1,4 +1,6 @@
 package com.example.gastostracker;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
@@ -8,7 +10,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String NOME_BANCO = "banco.db";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 2;
     private final String CRIA_GASTOS = "CREATE TABLE tbGastos (" +
             "pkGasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "descricao TEXT NOT NULL, " +
@@ -20,9 +22,20 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, NOME_BANCO, null, VERSAO);
     }
 
+    public Cursor listaGastos(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from tbGastos";
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CRIA_GASTOS);
+        try {
+            db.execSQL(CRIA_GASTOS);
+        }catch (SQLException e){
+            throw e;
+        }
+
     }
 
     @Override

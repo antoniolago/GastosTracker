@@ -33,14 +33,8 @@ public class CadastroActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                DbHelper db = new DbHelper(getBaseContext());
-                data = edtData.getText().toString();
-                try {
-                    minhaData = df.parse(data);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Gasto gasto= new Gasto(edtDescricao.getText().toString(), Double.valueOf(edtValor.getText().toString()), minhaData);
+                DbHelper db = new DbHelper(v.getContext());
+                Gasto gasto= new Gasto(edtDescricao.getText().toString(), Double.valueOf(edtValor.getText().toString()));
                 GastoDAO gastoDAO = new GastoDAO(getBaseContext());
                 String msg= gastoDAO.salvar(gasto);
                 Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();

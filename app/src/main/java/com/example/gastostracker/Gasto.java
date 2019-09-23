@@ -15,10 +15,9 @@ public class Gasto {
         this.valor = valor;
         this.data = data;
     }
-    public Gasto(String descricao, Double valor, Date data) {
+    public Gasto(String descricao, Double valor) {
         this.descricao = descricao;
         this.valor = valor;
-        this.data = data;
     }
     public int getId(){ return this.id; }
     public String getDescricao(){ return this.descricao; }
