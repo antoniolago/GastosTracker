@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btnListaGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this,CadastroActivity.class);
+                Intent it = new Intent(MainActivity.this,GastosAdapter.class);
                 startActivity(it);
             }
         });
