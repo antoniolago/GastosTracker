@@ -16,6 +16,7 @@ public class Gasto {
         this.data = data;
     }
     public Gasto(String descricao, Double valor) {
+        this.id = id;
         this.descricao = descricao;
         this.valor = valor;
     }

@@ -39,7 +39,7 @@ public class GastoDAO {
             valores=new ContentValues();
             valores.put("descricao", gasto.getDescricao());
             valores.put("valor", gasto.getValor());
-            valores.put("data", date.toString());
+            valores.put("data", "datetime('now','localtime')");
             System.out.println(date);
             resultado= db.insert("tbGastos",null,valores);
             db.close();
@@ -61,24 +61,6 @@ public class GastoDAO {
         db.close();
         return "Removido";
     }
-    public ArrayList<Gasto> list(){
-        ArrayList<Gasto> lista= new ArrayList<>();
-        db = banco.getReadableDatabase();
-        String query = "Select * from tbGastos";
-        Cursor cursor = db.rawQuery(query, null);
-        if (cursor!=null){
-            cursor.moveToFirst();
-            while (cursor.moveToNext()){
-                int id= cursor.getInt(0) ;
-                String descricao = cursor.getString(1) ;
-                Double valor = cursor.getDouble(2) ;
-                Date data = new Date(cursor.getLong(3)*1000);
-                Gasto c= new Gasto(id,descricao,valor,data);
-                lista.add(c);
-            }
-            return lista;
-        }
-        return null;
-    }
+
 }
 

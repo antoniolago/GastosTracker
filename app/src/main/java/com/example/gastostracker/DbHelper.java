@@ -15,7 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String VALOR = "valor";
     private static final String DATA = "data";
 
-    private static final int VERSAO = 3;
+    private static final int VERSAO = 4;
     private final String CRIA_GASTOS = "CREATE TABLE tbGastos (" +
             "pkGasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "descricao TEXT NOT NULL, " +
