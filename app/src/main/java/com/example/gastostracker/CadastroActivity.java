@@ -27,7 +27,6 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.adiciona_gasto);
         edtDescricao= findViewById(R.id.edtGasto);
         edtValor= findViewById(R.id.edtValor);
-        edtData= findViewById(R.id.edtData);
         btnSave= findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)

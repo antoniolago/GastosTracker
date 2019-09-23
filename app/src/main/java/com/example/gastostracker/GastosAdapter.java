@@ -24,8 +24,9 @@ public class GastosAdapter extends ArrayAdapter {
         TextView data = (TextView) listItemView.findViewById(R.id.txtData);
         TextView valor = (TextView) listItemView.findViewById(R.id.txtValor);
         descricao.setText(current.getDescricao().toString());
-        //data.setText(current.getData().toString());
-        valor.setText(current.getValor().toString());
+        data.setText(current.getData().toString());
+        String aux = "R$ "+ current.getValor().toString();
+        valor.setText(aux);
 
         return  listItemView;
 

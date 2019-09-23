@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CadastroActivity"></activity>
-        <activity android:name=".GridActivity" />
+        <activity android:name=".ListActivity" />
         <activity android:name=".GastosAdapter" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -3,6 +3,7 @@ package com.example.gastostracker;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -59,6 +61,24 @@ public class GastoDAO {
         db.close();
         return "Removido";
     }
-
+    public ArrayList<Gasto> list(){
+        ArrayList<Gasto> lista= new ArrayList<>();
+        db = banco.getReadableDatabase();
+        String query = "Select * from tbGastos";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor!=null){
+            cursor.moveToFirst();
+            while (cursor.moveToNext()){
+                int id= cursor.getInt(0) ;
+                String descricao = cursor.getString(1) ;
+                Double valor = cursor.getDouble(2) ;
+                Date data = new Date(cursor.getLong(3)*1000);
+                Gasto c= new Gasto(id,descricao,valor,data);
+                lista.add(c);
+            }
+            return lista;
+        }
+        return null;
+    }
 }
 

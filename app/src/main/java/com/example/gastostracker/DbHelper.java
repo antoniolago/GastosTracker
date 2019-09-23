@@ -10,6 +10,11 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String NOME_BANCO = "banco.db";
+    private static final String TABELA = "tbGastos";
+    private static final String ID = "id";
+    private static final String VALOR = "valor";
+    private static final String DATA = "data";
+
     private static final int VERSAO = 3;
     private final String CRIA_GASTOS = "CREATE TABLE tbGastos (" +
             "pkGasto INTEGER PRIMARY KEY AUTOINCREMENT, " +

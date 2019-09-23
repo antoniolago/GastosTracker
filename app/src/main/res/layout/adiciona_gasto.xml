@@ -17,13 +17,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="Salvar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtData" />
+            app:layout_constraintTop_toBottomOf="@+id/edtValor" />
 
         <EditText
             android:id="@+id/edtValor"
@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="Valor"
             android:inputType="numberDecimal"
-            app:layout_constraintEnd_toStartOf="@+id/edtData"
+            app:layout_constraintEnd_toEndOf="@+id/edtGasto"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtGasto" />
+
 
         <EditText
             android:id="@+id/edtGasto"
@@ -53,21 +53,6 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <com.vicmikhailau.maskededittext.MaskedEditText
-            android:id="@+id/edtData"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:ems="10"
-            android:hint="Data"
-            android:inputType="date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/edtValor"
-            app:layout_constraintTop_toBottomOf="@+id/edtGasto"
-            app:mask="##/##/####" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
