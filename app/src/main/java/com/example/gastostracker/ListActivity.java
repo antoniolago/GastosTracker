@@ -61,24 +61,13 @@ public class ListActivity extends AppCompatActivity {
                 //define um botão como positivo
                 builder.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        final EditText edtDescricao;
-                        final EditText edtValor;
-                        Button btnSave;
-                        setContentView(R.layout.adiciona_gasto);
-                        edtDescricao= findViewById(R.id.edtGasto);
-                        edtValor= findViewById(R.id.edtValor);
-                        btnSave= findViewById(R.id.btnSave);
-                        btnSave.setOnClickListener(new View.OnClickListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                            @Override
-                            public void onClick(View v) {
-                                Intent it = new Intent(ListActivity.this,EditaActivity.class);
-                                startActivity(it);
-                                listitem= list();
-                                adapter = new GastosAdapter(getApplicationContext(),listitem);
-                                listView.setAdapter(adapter);
-                            }
-                        });
+
+                        Intent it = new Intent(ListActivity.this,EditaActivity.class);
+                        it.putExtra("EXTRA_GASTO_ID", a.getId());
+                        startActivity(it);
+//                        listitem= list();
+//                        adapter = new GastosAdapter(getApplicationContext(),listitem);
+//                        listView.setAdapter(adapter);
                     }
                 });
                 //define um botão como negativo.
@@ -108,9 +97,9 @@ public class ListActivity extends AppCompatActivity {
         if (cursor!=null){
             cursor.moveToFirst();
             while (cursor.moveToNext()){
-                int id= cursor.getInt(0) ;
-                String descricao = cursor.getString(1) ;
-                Double valor = cursor.getDouble(2) ;
+                int id= cursor.getInt(0);
+                String descricao = cursor.getString(1);
+                Double valor = cursor.getDouble(2);
                 java.util.Date data = new Date(cursor.getLong(3)*1000);
                 Gasto c= new Gasto(id,descricao,valor,data);
                 lista.add(c);

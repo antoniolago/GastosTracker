@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,8 @@ public class CadastroActivity extends AppCompatActivity {
                 GastoDAO gastoDAO = new GastoDAO(getBaseContext());
                 String msg= gastoDAO.salvar(gasto);
                 Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+                Intent it = new Intent(CadastroActivity.this, MainActivity.class);
+                startActivity(it);
             }
         });
 

@@ -62,7 +62,7 @@ public class GastoDAO {
         return "Removido";
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    String editar(Gasto gasto){
+    public String editar(Gasto gasto){
         ContentValues valores;
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
@@ -79,7 +79,7 @@ public class GastoDAO {
             db.close();
             if (resultado !=-1){
 
-                return "Gasto inserido ="+ gasto.getDescricao();
+                return "Gasto editado = "+ gasto.getDescricao();
             }
         }catch (SQLException e){
             Log.e("ERRO", Objects.requireNonNull(e.getMessage()));

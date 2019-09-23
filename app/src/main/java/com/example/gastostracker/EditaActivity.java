@@ -1,10 +1,11 @@
 package com.example.gastostracker;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -35,10 +36,37 @@ public class EditaActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                Gasto gasto= new Gasto(edtDescricao.getText().toString(), Double.valueOf(edtValor.getText().toString()));
-                GastoDAO gastoDAO = new GastoDAO(getBaseContext());
-                String msg= gastoDAO.editar(gasto);
-                Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+
+                Calendar calendar = Calendar.getInstance();
+                final int id = getIntent().getIntExtra("EXTRA_GASTO_ID", 0);
+                final String descricao = edtDescricao.getText().toString();
+                final String valor = edtValor.getText().toString();
+                final Date date = calendar.getTime();
+
+                AsyncTask asyncTask = new AsyncTask() {
+                    @Override
+                    protected Object doInBackground(Object[] objects) {
+
+                        Gasto gasto= new Gasto(id, descricao, Double.valueOf(valor), date);
+                        GastoDAO gastoDAO = new GastoDAO(getBaseContext());
+                        String msg= gastoDAO.editar(gasto);
+
+                        return msg;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Object o) {
+
+                        Toast.makeText(getBaseContext(), (String) o,Toast.LENGTH_LONG).show();
+
+                        Intent ololinho = new Intent(EditaActivity.this, MainActivity.class);
+                        startActivity(ololinho);
+                        finish();
+                    }
+                };
+
+                asyncTask.execute();
+
             }
         });
 
