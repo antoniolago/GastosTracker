@@ -10,12 +10,13 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String NOME_BANCO = "banco.db";
-    private static final int VERSAO = 2;
+    private static final int VERSAO = 3;
     private final String CRIA_GASTOS = "CREATE TABLE tbGastos (" +
             "pkGasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "descricao TEXT NOT NULL, " +
             "valor TEXT, " +
-            "tipoGasto INTEGER);";
+            "tipoGasto INTEGER," +
+            "data DATE)";
 
 
     public DbHelper(Context context) {
@@ -28,6 +29,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         return cursor;
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {

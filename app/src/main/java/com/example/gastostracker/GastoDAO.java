@@ -1,5 +1,6 @@
 package com.example.gastostracker;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
@@ -21,7 +22,7 @@ public class GastoDAO {
     private DbGateway gw;
 
     GastoDAO(Context baseContext) {
-
+        banco = new DbHelper(baseContext);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -29,6 +30,7 @@ public class GastoDAO {
         ContentValues valores;
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
+
         long resultado;
         db = banco.getWritableDatabase();
         try{
