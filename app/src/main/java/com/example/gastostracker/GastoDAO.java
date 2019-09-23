@@ -55,12 +55,38 @@ public class GastoDAO {
 
     }
     public String deletar(Gasto c){
-        String where = "id = " +c.getId();
+        String where = "pkGasto = " +c.getId();
         db= banco.getReadableDatabase();
         db.delete("tbGastos",where,null);
         db.close();
         return "Removido";
     }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    String editar(Gasto gasto){
+        ContentValues valores;
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
 
+        long resultado;
+        db = banco.getWritableDatabase();
+        try{
+            valores=new ContentValues();
+            valores.put("descricao", gasto.getDescricao());
+            valores.put("valor", gasto.getValor());
+            valores.put("data", "datetime('now','localtime')");
+            System.out.println(date);
+            resultado= db.update("tbGastos",valores,"pkGasto ="+gasto.getId(),null);
+            db.close();
+            if (resultado !=-1){
+
+                return "Gasto inserido ="+ gasto.getDescricao();
+            }
+        }catch (SQLException e){
+            Log.e("ERRO", Objects.requireNonNull(e.getMessage()));
+        }
+
+        return "Erro!";
+
+    }
 }
 

@@ -12,6 +12,7 @@
         <activity android:name=".CadastroActivity"></activity>
         <activity android:name=".ListActivity" />
         <activity android:name=".GastosAdapter" />
+        <activity android:name=".EditaActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
